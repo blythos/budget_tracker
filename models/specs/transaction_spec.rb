@@ -9,7 +9,7 @@ class TestTransaction < MiniTest::Test
     @transaction1 = Transaction.new(
       {
         'id' => 1,
-        'amount' => 45,
+        'amount' => 4599,
         'transaction_date' => '14/06/19',
         'transaction_time' => '21:47',
         'tag_id' => 67,
@@ -23,7 +23,7 @@ class TestTransaction < MiniTest::Test
   end
 
   def test_get_amount()
-    assert_equal(45, @transaction1.amount)
+    assert_equal(4599, @transaction1.amount)
   end
 
   def test_get_date()
@@ -40,6 +40,6 @@ class TestTransaction < MiniTest::Test
 
   def test_get_merchant_id()
     assert_equal(12, @transaction1.merchant_id)
-  end 
+  end
 
 end

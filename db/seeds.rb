@@ -3,9 +3,10 @@ require_relative("../models/Tag.rb")
 require_relative("../models/Merchant.rb")
 require_relative("../models/Transaction.rb")
 
+Transaction.delete_all()
 Tag.delete_all()
 Merchant.delete_all()
-Transaction.delete_all()
+
 
 tag1 = Tag.new({'name' => 'groceries'})
 tag2 = Tag.new({'name' => 'entertainment'})
