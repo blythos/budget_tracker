@@ -14,6 +14,7 @@ CREATE TABLE tags (
 
 CREATE TABLE transactions (
   id SERIAL PRIMARY KEY,
+  amount INT,
   transaction_time VARCHAR(255),
   transaction_date VARCHAR(255),
   tag_id INT REFERENCES tags(id),
