@@ -1,4 +1,6 @@
 require_relative('../db/sql_runner.rb')
+require_relative('./Merchant.rb')
+require_relative('./Tag.rb')
 
 class Transaction
 
@@ -25,5 +27,25 @@ class Transaction
     sql = "DELETE FROM transactions"
     SqlRunner.run(sql)
   end
-  
+
+  def update()
+    sql = "UPDATE transactions SET (amount, transaction_date, transaction_time, tag_id, merchant_id) = ($1, $2, $3, $4, $5) WHERE id = $6 "
+    values = [@amount, @transaction_date, @transaction_time, @tag_id, @merchant_id, @id]
+    SqlRunner.run(sql, values)
+  end
+
+ def merchant()
+   sql = "SELECT * FROM merchants INNER JOIN transactions ON transactions.id = merchants.transactions_id WHERE merchants.transactions.id = $1"
+   values = [@id]
+   merchant = SqlRunner.run(sql, values).first
+   return Merchant.new(merchant)
+ end
+
+ def tag()
+   sql = "SELECT * FROM tags INNER JOIN transactions ON tags.id = transactions.tag_id WHERE transactions.tag_id = $1"
+   values = [@id]
+   tag = SqlRunner.run(sql, values).first
+   return Tag.new(tag)
+ end
+
 end
