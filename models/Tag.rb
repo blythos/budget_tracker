@@ -10,4 +10,17 @@ class Tag
     @name = tag['name']
   end
 
+  def save()
+    sql = "INSERT INTO tags (name) VALUES ($1) RETURNING id"
+    values = [@name]
+    results = SqlRunner.run(sql, values).first
+    @id = results['id'].to_i
+  end
+
+  def self.delete_all()
+    sql = "DELETE FROM tags"
+    SqlRunner.run(sql)
+  end
+
+
 end
