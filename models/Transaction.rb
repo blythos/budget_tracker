@@ -35,15 +35,15 @@ class Transaction
   end
 
  def merchant()
-   sql = "SELECT * FROM merchants INNER JOIN transactions ON transactions.id = merchants.transactions_id WHERE merchants.transactions.id = $1"
-   values = [@id]
+   sql = "SELECT * FROM merchants WHERE merchants.id = $1"
+   values = [@merchant_id]
    merchant = SqlRunner.run(sql, values).first
    return Merchant.new(merchant)
  end
 
  def tag()
-   sql = "SELECT * FROM tags INNER JOIN transactions ON tags.id = transactions.tag_id WHERE transactions.tag_id = $1"
-   values = [@id]
+   sql = "SELECT * FROM tags WHERE tags.id = $1"
+   values = [@tag_id]
    tag = SqlRunner.run(sql, values).first
    return Tag.new(tag)
  end
