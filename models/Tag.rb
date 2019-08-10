@@ -1,5 +1,6 @@
 require_relative("../db/sql_runner.rb")
 require_relative("./Transaction.rb")
+require_relative("./Merchant.rb")
 
 class Tag
 
@@ -49,10 +50,17 @@ class Tag
   end
 
   def transactions()
-    sql = "SELECT * FROM transactions INNER JOIN tags ON tags.id = transactions.tag_id WHERE transactions.tag_id = $1"
+    sql = "SELECT * FROM transactions WHERE transactions.tag_id = $1"
     values = [@id]
     transactions = SqlRunner.run(sql, values)
     return transactions.map { |transaction| Transaction.new(transaction) }
+  end
+
+  def merchants()
+    sql = "SELECT merchants.* FROM merchants INNER JOIN transactions ON merchants.id = transactions.merchant_id WHERE transactions.tag_id = $1"
+    values = [@id]
+    merchants = SqlRunner.run(sql, values)
+    return merchants.map { |merchant| Merchant.new(merchant) }
   end
 
 end
