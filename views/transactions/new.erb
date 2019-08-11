@@ -1,0 +1,30 @@
+<h1>Add transaction:</h1>
+
+<form action="/transactions" method="POST">
+
+  <label for="transaction-pounds">Amount: £</label>
+  <input type="number" min="0" id="transaction-pounds" name="pounds">.
+  <input type="number" min="0" max="99" id="transaction-pence" name="pence">p
+  <label for="transaction-tags">Tag: </label>
+  <select name="tag_id" id="transaction-tags">
+    <% for tag in @tags%>
+    <option value="<%=tag.id%>"><%=tag.name%></option>
+    <%end%>
+  </select>
+
+  <label for="transaction-merchants">Merchant: </label>
+  <select name="merchant_id" id="transaction-merchants">
+    <% for merchant in @merchants%>
+    <option value="<%=merchant.id%>"><%=merchant.name%></option>
+    <%end%>
+  </select>
+
+  <label for="transaction-date">Date:</label>
+  <input type="text" id="transaction-date" name="transaction_date">
+
+  <label for="transaction-time">Time:</label>
+  <input type="text" id="transaction-time" name="transaction_time">
+
+  <input type="submit" value="Add Transaction">
+
+</form>

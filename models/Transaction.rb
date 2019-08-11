@@ -9,11 +9,11 @@ class Transaction
 
   def initialize(transaction)
     @id = transaction['id'].to_i if transaction['id']
-    @amount = transaction['amount']
+    @amount = transaction['amount'].to_i
     @transaction_date = transaction['transaction_date']
     @transaction_time = transaction['transaction_time']
-    @tag_id = transaction['tag_id']
-    @merchant_id = transaction['merchant_id']
+    @tag_id = transaction['tag_id'].to_i
+    @merchant_id = transaction['merchant_id'].to_i
   end
 
   def save()
@@ -48,6 +48,8 @@ class Transaction
    return Tag.new(tag)
  end
 
+# Not very dry to have both of these.
+
  def currency_gbp()
    amount_string = @amount.to_s
    pence = amount_string[-2, 2]
@@ -56,7 +58,15 @@ class Transaction
    return gbp
  end
 
- def update_amount_from_form(amount_in_gbp)
+ def self.to_gbp(amount)
+   amount_string = amount.to_s
+   pence = amount_string[-2, 2]
+   pounds = amount_string[0..-3]
+   gbp = "£#{pounds}.#{pence}"
+   return gbp
+ end
+
+ def self.update_amount_from_form(amount_in_gbp)
    amount_string = amount_in_gbp[0..-4] + amount_in_gbp[-2, 2]
    @amount = amount_string.to_i
    update()
@@ -65,13 +75,26 @@ class Transaction
  def self.total()
    sql = "SELECT SUM (amount) FROM transactions"
    total = SqlRunner.run(sql).first
-   return total['sum'].to_i
+   return self.to_gbp(total['sum'])
  end
 
  def self.all()
-   sql = "SELECT * FROm transactions"
+   sql = "SELECT * FROM transactions"
    transactions = SqlRunner.run(sql)
    return transactions.map { |transaction| Transaction.new(transaction)}
- end 
+ end
+
+ def self.find(id)
+   sql = "SELECT * FROM transactions WHERE id = $1"
+   values = [id]
+   transaction = SqlRunner.run(sql, values).first
+   return Transaction.new(transaction)
+ end
+
+ def delete()
+   sql = "DELETE FROM transactions WHERE id = $1"
+   values = [@id]
+   SqlRunner.run(sql, values)
+ end
 
 end

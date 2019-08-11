@@ -1,0 +1,9 @@
+<h2>Transaction details:</h2>
+<p>Date: <%=@transaction.transaction_date%></p>
+<p>Time: <%=@transaction.transaction_time%></p>
+<p>Amount: <%=@transaction.currency_gbp%></p>
+<p>Merchant: <%=@transaction.merchant.name%></p>
+<p>Tag: <%=@transaction.tag.name%></p>
+<p><form action="/transactions/<%=@transaction.id%>/delete" method="POST">
+  <input type="submit" value="Delete">
+</form></p>
