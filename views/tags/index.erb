@@ -1,4 +1,5 @@
 <h1>Tags</h1>
+<p><a href="/tags/new">Add new tag</a></p>
 <% for tag in @tags %>
   <p>Tag: <%=tag.name%> | <a href="/tags/<%=tag.id%>/edit">edit</a></p>
   <p><a href="/tags/<%=tag.id%>">view</a></p>
