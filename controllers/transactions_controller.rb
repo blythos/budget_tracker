@@ -36,6 +36,14 @@ post '/transactions/:id/delete' do
   redirect to ('/transactions')
 end
 
+# UPDATE
+post '/transactions/:id' do
+  transaction = Transaction.new(params)
+  transaction.amount = params['pounds'].to_i * 100 + params['pence'].to_i
+  transaction.update()
+  redirect to ("/transactions/#{transaction.id}")
+end
+
 # SHOW
 get '/transactions/:id' do
   @transaction = Transaction.find(params['id'].to_i)

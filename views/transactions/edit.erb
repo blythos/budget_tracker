@@ -1,10 +1,10 @@
 <h1>Add transaction:</h1>
 
-<form action="/transactions" method="POST">
+<form action="/transactions/<%=@transaction.id%>" method="POST">
 
   <label for="transaction-pounds">Amount: £</label>
   <input type="number" min="0" id="transaction-pounds" name="pounds" value="<%=@transaction.pounds()%>">.
-  <input type="number" min="0" max="99" id="transaction-pence" name="pence" value="<%=@transaction.pounds()%>">p
+  <input type="number" min="0" max="99" id="transaction-pence" name="pence" value="<%=@transaction.pence()%>">p
   <label for="transaction-tags">Tag: </label>
   <select name="tag_id" id="transaction-tags">
     <% for tag in @tags%>
@@ -20,11 +20,11 @@
   </select>
 
   <label for="transaction-date">Date:</label>
-  <input type="text" id="transaction-date" name="transaction_date">
+  <input type="text" id="transaction-date" name="transaction_date" value="<%=@transaction.transaction_date%>">
 
   <label for="transaction-time">Time:</label>
-  <input type="text" id="transaction-time" name="transaction_time">
+  <input type="text" id="transaction-time" name="transaction_time" value="<%=@transaction.transaction_time%>">
 
-  <input type="submit" value="Add Transaction">
+  <input type="submit" value="Edit Transaction">
 
 </form>
