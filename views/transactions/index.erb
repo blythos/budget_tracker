@@ -1,5 +1,10 @@
 <h1>Transactions</h1>
 
 <% for transaction in @transactions %>
+<p>Date: <%=transaction.transaction_date%></p>
+<p>Time: <%=transaction.transaction_time%></p>
 <p>Amount: <%=transaction.currency_gbp%></p>
+<p>Merchant: <%=transaction.merchant.name%></p>
+<p>Tag: <%=transaction.tag.name%></p>
+<hr />
 <% end %>
