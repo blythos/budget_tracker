@@ -48,4 +48,12 @@ class Transaction
    return Tag.new(tag)
  end
 
+ def currency_gbp()
+   amount_string = @amount.to_s
+   pence = amount_string[-2, 2]
+   pounds = amount_string[0..-3]
+   gbp = "£#{pounds}.#{pence}"
+   return gbp
+ end
+
 end
