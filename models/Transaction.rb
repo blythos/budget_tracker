@@ -56,4 +56,15 @@ class Transaction
    return gbp
  end
 
+ def update_amount(amount_in_gbp)
+   amount_string = amount_in_gbp[0..-4] + amount_in_gbp[-2, 2]
+   @amount = amount_string.to_i
+ end
+
+ def self.total()
+   sql = "SELECT SUM (amount) FROM transactions"
+   total = SqlRunner.run(sql).first
+   return total['sum'].to_i
+ end
+
 end
