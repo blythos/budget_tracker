@@ -56,9 +56,10 @@ class Transaction
    return gbp
  end
 
- def update_amount(amount_in_gbp)
+ def update_amount_from_form(amount_in_gbp)
    amount_string = amount_in_gbp[0..-4] + amount_in_gbp[-2, 2]
    @amount = amount_string.to_i
+   update()
  end
 
  def self.total()
