@@ -13,7 +13,7 @@ post '/tags' do
   redirect to ('/tags')
 end
 
-# CREATE
+# NEW
 get '/tags/new' do
   erb(:'/tags/new')
 end
