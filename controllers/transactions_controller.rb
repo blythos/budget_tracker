@@ -21,6 +21,15 @@ get '/transactions/new' do
   erb(:'transactions/new')
 end
 
+# EDIT
+get '/transactions/:id/edit' do
+  @tags = Tag.all()
+  @merchants = Merchant.all()
+  @transaction = Transaction.find(params['id'].to_i)
+  erb(:'transactions/edit')
+end
+
+# DESTROY
 post '/transactions/:id/delete' do
   transaction = Transaction.find(params['id'])
   transaction.delete()
