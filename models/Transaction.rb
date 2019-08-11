@@ -68,4 +68,10 @@ class Transaction
    return total['sum'].to_i
  end
 
+ def self.all()
+   sql = "SELECT * FROm transactions"
+   transactions = SqlRunner.run(sql)
+   return transactions.map { |transaction| Transaction.new(transaction)}
+ end 
+
 end
