@@ -49,9 +49,10 @@ class Tag
     return Tag.new(tag)
   end
 
-  def transactions()
-    sql = "SELECT * FROM transactions WHERE transactions.tag_id = $1"
-    values = [@id]
+  # Allows you to specify the amount of transactions that the function returns.
+  def transactions(number = nil)
+    sql = "SELECT * FROM transactions WHERE transactions.tag_id = $1 ORDER BY transaction_date DESC LIMIT $2"
+    values = [@id, number]
     transactions = SqlRunner.run(sql, values)
     return transactions.map { |transaction| Transaction.new(transaction) }
   end

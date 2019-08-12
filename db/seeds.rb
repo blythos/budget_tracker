@@ -26,7 +26,7 @@ merchant3.save()
 
 transaction1 = Transaction.new({
   'amount' => 3499,
-  'transaction_date' => "21/03/19",
+  'transaction_date' => "2019-07-05",
   'transaction_time' => "13:41",
   'tag_id' => tag2.id,
   'merchant_id' => merchant2.id
@@ -35,7 +35,7 @@ transaction1 = Transaction.new({
 
 transaction2 = Transaction.new({
     'amount' => 2744,
-    'transaction_date' => "24/03/19",
+    'transaction_date' => "2019-03-01",
     'transaction_time' => "17:56",
     'tag_id' => tag1.id,
     'merchant_id' => merchant1.id
@@ -44,7 +44,7 @@ transaction2 = Transaction.new({
 
 transaction3 = Transaction.new({
   'amount' => 4000,
-  'transaction_date' => "01/04/19",
+  'transaction_date' => "2019-04-29",
   'transaction_time' => "09:00",
   'tag_id' => tag3.id,
   'merchant_id' => merchant3.id

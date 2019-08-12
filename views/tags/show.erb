@@ -10,7 +10,7 @@
 <p>Time: <%=transaction.transaction_time%></p>
 <p>Amount: <%=transaction.currency_gbp%></p>
 <p>Merchant: <a href="/merchants/<%=transaction.merchant.id%>"><%=transaction.merchant.name%></a></p>
-<p><a href="/transactions/<%=transaction.id%>">View transaction</a></p>
+<p><a href="/transactions/<%=transaction.id%>">edit or delete transaction</a></p>
 <hr />
 <% end %>
 <p>Total: <%=Converter.gbp(@total)%></p>

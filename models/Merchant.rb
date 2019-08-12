@@ -47,9 +47,9 @@ class Merchant
     return Merchant.new(merchant)
   end
 
-  def transactions()
-    sql = "SELECT * FROM transactions INNER JOIN merchants ON merchants.id = transactions.merchant_id WHERE transactions.merchant_id = $1"
-    values = [@id]
+  def transactions(number = nil)
+    sql = "SELECT * FROM transactions INNER JOIN merchants ON merchants.id = transactions.merchant_id WHERE transactions.merchant_id = $1 ORDER BY transaction_date DESC LIMIT $2"
+    values = [@id, number]
     transactions = SqlRunner.run(sql, values)
     return transactions.map { |transaction| Transaction.new(transaction) }
   end
