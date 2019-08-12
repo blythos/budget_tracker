@@ -1,6 +1,15 @@
-<h1>Tag</h1>
+<h1><%=@tag.name.capitalize%></h1>
 
-<p>Name of tag: <%=@tag.name%> | <a href="/tags/<%=@tag.id%>/edit">edit</a></p>
+<p><a href="/tags/<%=@tag.id%>/edit">Edit Tag</a></p>
 <p><form action="/tags/<%=@tag.id%>/delete" method="POST">
   <input type="submit" value="Delete tag">
 </form></p>
+
+<% for transaction in @transactions %>
+<p>Date: <%=transaction.transaction_date%></p>
+<p>Time: <%=transaction.transaction_time%></p>
+<p>Amount: <%=transaction.currency_gbp%></p>
+<p>Merchant: <%=transaction.merchant.name%></p>
+<p><a href="/transactions/<%=transaction.id%>">More info</a></p>
+<hr />
+<% end %>
