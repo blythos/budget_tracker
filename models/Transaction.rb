@@ -94,6 +94,14 @@ end
    return transactions.map { |transaction| Transaction.new(transaction)}
  end
 
+ # Brings back the first x amount of transactions specified by the number you input.
+ def self.top(number)
+   sql = "SELECT * FROM transactions ORDER BY transaction_date DESC LIMIT $1"
+   values = [number]
+   transactions = SqlRunner.run(sql, values)
+   return transactions.map { |transaction| Transaction.new(transaction) }
+ end
+
  def self.find(id)
    sql = "SELECT * FROM transactions WHERE id = $1"
    values = [id]
