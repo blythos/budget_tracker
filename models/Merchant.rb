@@ -54,4 +54,12 @@ class Merchant
     return transactions.map { |transaction| Transaction.new(transaction) }
   end
 
+  def total()
+    total = 0
+    for transaction in transactions()
+      total += transaction.amount
+    end
+    return total
+  end
+
 end

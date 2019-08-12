@@ -56,40 +56,40 @@ end
 def pence()
   amount_string = @amount.to_s
   return amount_string[-2, 2].to_i
-end 
+end
 
-# Not very dry to have both of these.
-
- def currency_gbp()
-   amount_string = @amount.to_s
-   pence = amount_string[-2, 2]
-   pounds = amount_string[0..-3]
-   gbp = "£#{pounds}.#{pence}"
-   return gbp
- end
-
- def self.to_gbp(amount)
-   amount_string = amount.to_s
-   pence = amount_string[-2, 2]
-   pounds = amount_string[0..-3]
-   gbp = "£#{pounds}.#{pence}"
-   return gbp
- end
-
- def self.update_amount_from_form(amount_in_gbp)
-   amount_string = amount_in_gbp[0..-4] + amount_in_gbp[-2, 2]
-   @amount = amount_string.to_i
-   update()
- end
+ # Can probably get rid of all these
+ #
+ # def currency_gbp()
+ #   amount_string = @amount.to_s
+ #   pence = amount_string[-2, 2]
+ #   pounds = amount_string[0..-3]
+ #   gbp = "£#{pounds}.#{pence}"
+ #   return gbp
+ # end
+ #
+ # def self.to_gbp(amount)
+ #   amount_string = amount.to_s
+ #   pence = amount_string[-2, 2]
+ #   pounds = amount_string[0..-3]
+ #   gbp = "£#{pounds}.#{pence}"
+ #   return gbp
+ # end
+ #
+ # def self.update_amount_from_form(amount_in_gbp)
+ #   amount_string = amount_in_gbp[0..-4] + amount_in_gbp[-2, 2]
+ #   @amount = amount_string.to_i
+ #   update()
+ # end
 
  def self.total()
    sql = "SELECT SUM (amount) FROM transactions"
    total = SqlRunner.run(sql).first
-   return self.to_gbp(total['sum'])
+   return total['sum'].to_i
  end
 
  def self.all()
-   sql = "SELECT * FROM transactions"
+   sql = "SELECT * FROM transactions ORDER BY transaction_date DESC"
    transactions = SqlRunner.run(sql)
    return transactions.map { |transaction| Transaction.new(transaction)}
  end

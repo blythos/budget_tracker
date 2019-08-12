@@ -1,9 +1,10 @@
-<h2>Transaction details (<a href="/transactions/<%=@transaction.id%>/edit">edit</a>):</h2>
+<h2>Transaction details</h2>
 <p>Date: <%=@transaction.transaction_date%></p>
 <p>Time: <%=@transaction.transaction_time%></p>
 <p>Amount: <%=@transaction.currency_gbp%></p>
-<p>Merchant: <%=@transaction.merchant.name%></p>
-<p>Tag: <%=@transaction.tag.name%></p>
+<p>Merchant: <a href="/merchants/<%=@transaction.merchant.id%>"><%=@transaction.merchant.name%></a></p>
+<p>Tag: <a href="/tags/<%=@transaction.tag.id%>"><%=@transaction.tag.name%></a></p>
+<h3><a href="/transactions/<%=@transaction.id%>/edit">Edit Transaction</a></h3>
 <p><form action="/transactions/<%=@transaction.id%>/delete" method="POST">
-  <input type="submit" value="Delete">
+  <input type="submit" value="Delete transaction">
 </form></p>

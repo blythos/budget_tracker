@@ -63,4 +63,12 @@ class Tag
     return merchants.map { |merchant| Merchant.new(merchant) }
   end
 
+  def total()
+    total = 0
+    for transaction in transactions()
+      total += transaction.amount
+    end
+    return total
+  end
+
 end

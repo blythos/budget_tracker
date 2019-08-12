@@ -2,5 +2,6 @@
 <p><a href="/merchants/new">Add new merchant</a></p>
 <% for merchant in @merchants %>
   <p>Name of merchant: <%=merchant.name%> | <a href="/merchants/<%=merchant.id%>/edit">edit</a></p>
-  <p><a href="/merchants/<%=merchant.id%>">view</a></p>
+  <p><a href="/merchants/<%=merchant.id%>">View all transactions for <%=merchant.name%></a></p>
+  <hr />
 <% end %>

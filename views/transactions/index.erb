@@ -1,14 +1,14 @@
 <h1>Transactions</h1>
-<h2>Total: <%=Transaction.total%></h2>
+<h2>Total: <%=Converter.gbp(@total)%></h2>
 
 <% for transaction in @transactions %>
-<p>Date: <%=transaction.transaction_date%></p>
+<p>Date: <%=Converter.format_date(transaction.transaction_date)%></p>
 <p>Time: <%=transaction.transaction_time%></p>
 <p>Amount: <%=transaction.currency_gbp%></p>
-<p>Merchant: <%=transaction.merchant.name%></p>
-<p>Tag: <%=transaction.tag.name%></p>
-<p><a href="/transactions/<%=transaction.id%>">More info</a></p>
+<p>Merchant: <a href="/merchants/<%=transaction.merchant.id%>"><%=transaction.merchant.name%></a></p>
+<p>Tag: <a href="/tags/<%=transaction.tag.id%>"><%=transaction.tag.name%></a></p>
+<p><a href="/transactions/<%=transaction.id%>">Edit or Delete Transaction</a></p>
 <hr />
 <% end %>
 
-<p>Total: <%=Transaction.total%></p>
+<p>Total: <%=Converter.gbp(@total)%></p>
