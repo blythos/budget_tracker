@@ -115,4 +115,16 @@ end
    SqlRunner.run(sql, values)
  end
 
+ def year()
+   return @transaction_date[0..3].to_i
+ end
+
+ def month()
+   return @transaction_date[5..6].to_i
+ end
+
+ def day()
+   return @transaction_date[8..9].to_i
+ end 
+
 end
