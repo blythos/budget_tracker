@@ -3,15 +3,16 @@
 <form action="/transactions" method="POST">
 
   <label for="transaction-pounds">Amount: £</label>
-  <input type="number" min="0" id="transaction-pounds" name="pounds" required>.
-  <input type="number" min="0" max="99" id="transaction-pence" name="pence" required>p
+  <input type="number" min="0" id="transaction-pounds" name="pounds" required> .
+  <input type="number" min="0" max="99" id="transaction-pence" name="pence" required> p
+  <br><br>
   <label for="transaction-tags">Tag: </label>
   <select name="tag_id" id="transaction-tags" required>
     <% for tag in @tags%>
     <option <%= "selected" if tag.name == "general"%> value="<%=tag.id%>"><%=tag.name%></option>
     <%end%>
   </select>
-
+  <br><br>
   <label for="transaction-merchants">Merchant: </label>
   <select name="merchant_id" id="transaction-merchants" required>
      <option disabled selected value style="display:none">select a merchant</option>
@@ -19,7 +20,7 @@
     <option value="<%=merchant.id%>"><%=merchant.name%></option>
     <%end%>
   </select>
-
+  <br><br>
   <label for="transaction-date">Date:</label>
   <input type="date" id="transaction-date" name="transaction_date" required>
 
