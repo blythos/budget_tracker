@@ -4,8 +4,8 @@
   <p>Name of merchant: <%=merchant.name%> | <a href="/merchants/<%=merchant.id%>/edit">edit</a></p>
   <% if merchant.transactions(1) != [] %>
     <h2>Last transaction for <%=merchant.name%> </h2>
-    <p>Date: <%=Converter.format_date(merchant.transactions(1).first.transaction_date)%> Time: <%=merchant.transactions(1).first.transaction_time%></p>
-    <p>Amount: <%=Converter.gbp(merchant.transactions(1).first.amount)%></p>
+    <p>Date: <%=Transaction.format_date(merchant.transactions(1).first.transaction_date)%> Time: <%=merchant.transactions(1).first.transaction_time%></p>
+    <p>Amount: <%=Transaction.gbp(merchant.transactions(1).first.amount)%></p>
   <% end %>
   <p><a href="/merchants/<%=merchant.id%>">View all transactions for <%=merchant.name%></a></p>
 

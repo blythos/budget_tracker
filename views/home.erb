@@ -4,7 +4,7 @@
 
 <h2>Latest Transactions: </h2>
 <% for transaction in @top_5 %>
-<p>Date: <%=Converter.format_date(transaction.transaction_date)%></p>
+<p>Date: <%=Transaction.format_date(transaction.transaction_date)%></p>
 <p>Time: <%=transaction.transaction_time%></p>
 <p>Amount: <%=transaction.currency_gbp%></p>
 <p>Merchant: <a href="/merchants/<%=transaction.merchant.id%>"><%=transaction.merchant.name%></a></p>

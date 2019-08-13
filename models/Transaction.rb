@@ -58,30 +58,6 @@ def pence()
   return amount_string[-2, 2].to_i
 end
 
- # Can probably get rid of all these
- #
- # def currency_gbp()
- #   amount_string = @amount.to_s
- #   pence = amount_string[-2, 2]
- #   pounds = amount_string[0..-3]
- #   gbp = "£#{pounds}.#{pence}"
- #   return gbp
- # end
- #
- # def self.to_gbp(amount)
- #   amount_string = amount.to_s
- #   pence = amount_string[-2, 2]
- #   pounds = amount_string[0..-3]
- #   gbp = "£#{pounds}.#{pence}"
- #   return gbp
- # end
- #
- # def self.update_amount_from_form(amount_in_gbp)
- #   amount_string = amount_in_gbp[0..-4] + amount_in_gbp[-2, 2]
- #   @amount = amount_string.to_i
- #   update()
- # end
-
  def self.total()
    sql = "SELECT SUM (amount) FROM transactions"
    total = SqlRunner.run(sql).first
@@ -125,6 +101,22 @@ end
 
  def day()
    return @transaction_date[8..9].to_i
- end 
+ end
+
+ def self.gbp(amount)
+   amount_string = amount.to_s
+   pence = amount_string[-2, 2]
+   pounds = amount_string[0..-3]
+   gbp = "£#{pounds}.#{pence}"
+   return gbp
+ end
+
+ def self.format_date(date)
+   year = date[0..3]
+   month = date[5..6]
+   day = date[8..9]
+   return "#{day}/#{month}/#{year}"
+ end
+
 
 end

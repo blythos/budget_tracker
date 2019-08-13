@@ -4,8 +4,8 @@
   <p>Tag: <%=tag.name%> | <a href="/tags/<%=tag.id%>/edit">edit</a></p>
   <% if tag.transactions(1) != [] %>
     <h2>Last transaction for <%=tag.name%> </h2>
-    <p>Date: <%=Converter.format_date(tag.transactions(1).first.transaction_date)%> Time: <%=tag.transactions(1).first.transaction_time%></p>
-    <p>Amount: <%=Converter.gbp(tag.transactions(1).first.amount)%></p>
+    <p>Date: <%=Transaction.format_date(tag.transactions(1).first.transaction_date)%> Time: <%=tag.transactions(1).first.transaction_time%></p>
+    <p>Amount: <%=Transaction.gbp(tag.transactions(1).first.amount)%></p>
   <% end %>
   <p><a href="/tags/<%=tag.id%>">View all transactions marked <%=tag.name%></a></p>
   <hr />
