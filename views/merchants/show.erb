@@ -4,13 +4,23 @@
 <p><form action="/merchants/<%=@merchant.id%>/delete" method="POST">
   <input type="submit" value="Delete merchant">
 </form></p>
-<% total = 0 %>
-<% for transaction in @transactions %>
-<p>Date: <%=transaction.transaction_date%></p>
-<p>Time: <%=transaction.transaction_time%></p>
-<p>Amount: <%=transaction.currency_gbp%></p>
-<p>Tag: <%=transaction.tag.name%></p>
-<p><a href="/transactions/<%=transaction.id%>">More info</a></p>
-<hr />
-<% end %>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Amount</th>
+    <th>Tag</th>
+    <th> </th>
+  </tr>
+  <% for transaction in @transactions %>
+    <tr>
+      <td><%=transaction.transaction_date%></td>
+      <td><%=transaction.transaction_time%></td>
+      <td><%=transaction.currency_gbp%></td>
+      <td><a href="/tags/<%=transaction.tag.id%>"><%=transaction.tag.name%></a></td>
+      <td><a href="/transactions/<%=transaction.id%>">More info</a></td>
+    </tr>
+  <% end %>
+</table>
 <p>Total: <%=Transaction.gbp(@total)%></p>

@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/styles/style.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Budget Tracker</title>
 </head>
 <body>
-  <nav><a href="/">Home</a> | <a href="/transactions">All Transactions</a> | <a href="/transactions/new">Add Transaction</a> | <a href="/tags">Tags</a> | <a href="/merchants">Merchants</a></nav>
+  <header>
+    Budget Tracker
+  </header>
   <main>
-    <%=yield%>
+    <article>
+      <%=yield%>
+    </article>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/transactions">All Transactions</a></li>
+      <li><a href="/transactions/new">Add Transaction</a></li>
+      <li><a href="/tags">Tags</a></li>
+      <li><a href="/merchants">Merchants</a></li>
+    </ul>
+  </nav>
+  <aside>Aside</aside>
   </main>
+
+
 </body>
 </html>

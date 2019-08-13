@@ -1,13 +1,14 @@
 <h1>All Merchants</h1>
 <p><a href="/merchants/new">Add new merchant</a></p>
 <% for merchant in @merchants %>
-  <p>Name of merchant: <%=merchant.name%> | <a href="/merchants/<%=merchant.id%>/edit">edit</a></p>
   <% if merchant.transactions(1) != [] %>
-    <h2>Last transaction for <%=merchant.name%> </h2>
+    <h2>Last transaction for <a href="/merchants/<%=merchant.id%>/edit"><%=merchant.name%></a></h2>
     <p>Date: <%=Transaction.format_date(merchant.transactions(1).first.transaction_date)%> Time: <%=merchant.transactions(1).first.transaction_time%></p>
     <p>Amount: <%=Transaction.gbp(merchant.transactions(1).first.amount)%></p>
+      <p><a href="/merchants/<%=merchant.id%>">View all transactions for <%=merchant.name%></a></p>
+  <% else %>
+  <h2>No transactions for  <a href="/merchants/<%=merchant.id%>/edit"><%=merchant.name%></a> yet</h2>
   <% end %>
-  <p><a href="/merchants/<%=merchant.id%>">View all transactions for <%=merchant.name%></a></p>
 
   <hr />
 <% end %>

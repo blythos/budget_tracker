@@ -1,0 +1,48 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-image: linear-gradient(90deg,#14233c 43%,#FA255E);
+  background-color: grey;
+  font-family: sans-serif;
+  color: #FFF;
+}
+
+header {
+  text-align: center;
+}
+
+main {
+  display: flex;
+  flex: 1;
+}
+
+article {
+  flex: 1;
+  background-color: #aaa;
+  border-radius: 10px;
+}
+
+nav, aside {
+    flex: 0 0 12em;
+}
+
+nav {
+  order: -1;
+}
+
+a {
+  color: #FA255E;
+}
+
+table, th, td {
+  border: 1px solid #dddddd;
+  border-collapse: collapse;
+  color: #000
+}
+
+td, th {
+  background-color: #FFF;
+  text-align: left;
+  padding: 12px;
+}
