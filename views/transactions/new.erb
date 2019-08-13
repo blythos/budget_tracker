@@ -3,27 +3,28 @@
 <form action="/transactions" method="POST">
 
   <label for="transaction-pounds">Amount: £</label>
-  <input type="number" min="0" id="transaction-pounds" name="pounds">.
-  <input type="number" min="0" max="99" id="transaction-pence" name="pence">p
+  <input type="number" min="0" id="transaction-pounds" name="pounds" required>.
+  <input type="number" min="0" max="99" id="transaction-pence" name="pence" required>p
   <label for="transaction-tags">Tag: </label>
-  <select name="tag_id" id="transaction-tags">
+  <select name="tag_id" id="transaction-tags" required>
     <% for tag in @tags%>
-    <option value="<%=tag.id%>"><%=tag.name%></option>
+    <option <%= "selected" if tag.name == "general"%> value="<%=tag.id%>"><%=tag.name%></option>
     <%end%>
   </select>
 
   <label for="transaction-merchants">Merchant: </label>
-  <select name="merchant_id" id="transaction-merchants">
+  <select name="merchant_id" id="transaction-merchants" required>
+     <option disabled selected value style="display:none">select a merchant</option>
     <% for merchant in @merchants%>
     <option value="<%=merchant.id%>"><%=merchant.name%></option>
     <%end%>
   </select>
 
   <label for="transaction-date">Date:</label>
-  <input type="date" id="transaction-date" name="transaction_date">
+  <input type="date" id="transaction-date" name="transaction_date" required>
 
   <label for="transaction-time">Time:</label>
-  <input type="time" id="transaction-time" name="transaction_time">
+  <input type="time" id="transaction-time" name="transaction_time" required>
 
   <input type="submit" value="Add Transaction">
 
