@@ -1,12 +1,23 @@
-<h1>Tags</h1>
-<p><a href="/tags/new">Add new tag</a></p>
+<h1>All Tags</h1>
+<h2><a href="/tags/new">Add new tag</a></h2>
 <% for tag in @tags %>
-  <p>Tag: <%=tag.name%> | <a href="/tags/<%=tag.id%>/edit">edit</a></p>
   <% if tag.transactions(1) != [] %>
-    <h2>Last transaction for <%=tag.name%> </h2>
-    <p>Date: <%=Transaction.format_date(tag.transactions(1).first.transaction_date)%> Time: <%=tag.transactions(1).first.transaction_time%></p>
-    <p>Amount: <%=Transaction.gbp(tag.transactions(1).first.amount)%></p>
+    <h2>Last transaction for <a href="/tags/<%=tag.id%>"><%=tag.name%></a>:</h2>
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Amount</th>
+      </tr>
+      <tr>
+        <td><%=Transaction.format_date(tag.transactions(1).first.transaction_date)%></td>
+        <td><%=tag.transactions(1).first.transaction_time%></td>
+        <td> <%=Transaction.gbp(tag.transactions(1).first.amount)%></td>
+      </tr>
+    </table>
+    <p><a href="/tags/<%=tag.id%>">View all transactions marked <%=tag.name%></a></p>
+  <% else %>
+  <h2>No transactions for  <a href="/tags/<%=tag.id%>"><%=tag.name%></a> yet.</h2>
   <% end %>
-  <p><a href="/tags/<%=tag.id%>">View all transactions marked <%=tag.name%></a></p>
   <hr />
 <% end %>

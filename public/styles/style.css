@@ -8,9 +8,13 @@ body {
   color: #FFF;
 }
 
+h1 {
+  font-size: 3em;
+}
+
 header {
-  text-align: center;
   font-size: 4em;
+  padding-left: 0.5  em;
 }
 
 main {
@@ -46,4 +50,19 @@ td, th {
   background-color: #FFF;
   text-align: left;
   padding: 12px;
+}
+
+/* this is supposed to be involved in making it scale to mobile, but... not working */
+@media (min-width: 768px) {
+  main {
+    flex-direction: row;
+    flex: 1;
+  }
+  article {
+    flex: 1;
+  }
+  nav, aside {
+    /* 12em is the width of the columns */
+    flex: 0 0 12em;
+  }
 }

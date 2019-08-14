@@ -1,9 +1,11 @@
 <h1><%=@tag.name.capitalize%></h1>
 
-<p><a href="/tags/<%=@tag.id%>/edit">Edit Tag</a></p>
+<p><a href="/tags/<%=@tag.id%>/edit">Change name</a></p>
 <p><form action="/tags/<%=@tag.id%>/delete" method="POST">
   <input type="submit" value="Delete tag">
 </form></p>
+
+<% if @transactions != [] %>
 
 <table>
   <tr>
@@ -24,3 +26,6 @@
 <% end %>
 </table>
 <p>Total: <%=Transaction.gbp(@total)%></p>
+<% else %>
+<p>No transactions have been recorded for <%=@tag.name%>.</p>
+<% end %>

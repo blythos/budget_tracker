@@ -1,10 +1,11 @@
 <h1><%=@merchant.name%></h1>
 
-<p><a href="/merchants/<%=@merchant.id%>/edit">Edit Merchant</a></p>
+<p><a href="/merchants/<%=@merchant.id%>/edit">Change name</a></p>
 <p><form action="/merchants/<%=@merchant.id%>/delete" method="POST">
   <input type="submit" value="Delete merchant">
 </form></p>
 
+<% if @transactions != [] %>
 <table>
   <tr>
     <th>Date</th>
@@ -24,3 +25,6 @@
   <% end %>
 </table>
 <p>Total: <%=Transaction.gbp(@total)%></p>
+<% else %>
+<p>No transactions have been recorded for <%=@merchant.name%>.</p>
+<% end %>
