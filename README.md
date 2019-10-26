@@ -1,4 +1,6 @@
 # Budget Tracker
+I built a budget tracking app in Ruby with a Sinatra backend. The brief for this project was:
+
 ### Spending Tracker
 
 Build an app that allows a user to track their spending.
@@ -35,5 +37,5 @@ User should be able to:
 * The user should be able to supply a budget, and the app should alert the user somehow when when they are nearing this budget or have gone over it.
 * The user should be able to filter their view of transactions, for example, to view all transactions in a given month, or view all spending on groceries.
 
-
+## Screenshot
 <img src="images/budget-tracker.png" width=700 />
