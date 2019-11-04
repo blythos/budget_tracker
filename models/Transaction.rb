@@ -103,8 +103,8 @@ end
    return @transaction_date[8..9].to_i
  end
 
- def self.gbp(amount)
-   amount_string = amount.to_s
+ def gbp()
+   amount_string = @amount.to_s
    pence = amount_string[-2, 2]
    pounds = amount_string[0..-3]
    gbp = "£#{pounds}.#{pence}"
