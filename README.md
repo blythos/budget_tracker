@@ -26,12 +26,6 @@ User should be able to:
 * Assign tags and merchants to a transaction, as well as an amount spent on each transaction.
 * The app should display all the transactions a user has made in a single view, with each transaction's amount, merchant and tag, and a total for all transactions.
 
-#### User Stories - Possible Extensions:
-| As a  | I want to be able to  | So that |
-|---|---|---|
-| User | Set a budget on my app | I don’t overspend |
-| User | View my transactions based on month/category | I can get a clearer view of my outgoings over a specific period/to a specific category |
-
 #### Acceptance Criteria - Possible Extensions:
 * Transactions should have a timestamp, and the user should be able to view transactions sorted by the time they took place.
 * The user should be able to supply a budget, and the app should alert the user somehow when when they are nearing this budget or have gone over it.
