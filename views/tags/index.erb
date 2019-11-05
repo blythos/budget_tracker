@@ -12,7 +12,7 @@
       <tr>
         <td><%=Transaction.format_date(tag.transactions(1).first.transaction_date)%></td>
         <td><%=tag.transactions(1).first.transaction_time%></td>
-        <td> <%=Transaction.gbp(tag.transactions(1).first.amount)%></td>
+        <td> <%=tag.transactions(1)[0].gbp()%></td>
       </tr>
     </table>
     <p><a href="/tags/<%=tag.id%>">View all transactions marked <%=tag.name%></a></p>

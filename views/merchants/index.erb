@@ -12,7 +12,7 @@
       <tr>
         <td><%=Transaction.format_date(merchant.transactions(1).first.transaction_date)%></td>
         <td><%=merchant.transactions(1).first.transaction_time%></td>
-        <td><%=Transaction.gbp(merchant.transactions(1).first.amount)%></td>
+        <td><%=merchant.transactions(1)[0].gbp() %></td>
       </tr>
     </table>
     <p><a href="/merchants/<%=merchant.id%>">View all transactions for <%=merchant.name%></a></p>
