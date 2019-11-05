@@ -39,3 +39,15 @@ User should be able to:
 
 ## Screenshot
 <img src="images/budget-tracker.png" width=700 />
+
+
+## Running the App
+If you want to see this in action, you'll need Ruby and PostGreSQL installed. Do the following in your terminal:
+
+1. Run the command `createdb budget_tracker` to set up the database.
+2. From the root of the project, run `psql -d budget_tracker -f db/budget_tracker.sql' to set up the tables and relationships
+3. Populate the tables with seed data using `ruby db/seeds.rb` 
+4. Run the Sinatra server with `ruby controller.rb`
+5. Visit http://localhost:4567/ in your browser for access
+
+You can end the server any time by pressing CTRL + C in the terminal window that's running the process. Thanks for checking it out!
